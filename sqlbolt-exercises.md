@@ -16,10 +16,10 @@ SELECT * FROM movies;
 ```
 
 ## Exercise 2 — Tasks
-Find the movie with a row id of 6
-Find the movies released in the years between 2000 and 2010
-Find the movies not released in the years between 2000 and 2010
-Find the first 5 Pixar movies and their release year
+- Find the movie with a row id of 6
+- Find the movies released in the years between 2000 and 2010
+- Find the movies not released in the years between 2000 and 2010
+- Find the first 5 Pixar movies and their release year
 ```
 SELECT * FROM Movies WHERE id=6;
 SELECT * FROM Movies WHERE Year BETWEEN 2000 AND 2010;
@@ -28,10 +28,10 @@ SELECT * FROM movies WHERE ID BETWEEN 1 AND 5;
 ```
 
 ## Exercise 3 — Tasks
-Find all the Toy Story movies ✓
-Find all the movies directed by John Lasseter
-Find all the movies (and director) not directed by John Lasseter
-Find all the WALL-* movies
+- Find all the Toy Story movies ✓
+- Find all the movies directed by John Lasseter
+- Find all the movies (and director) not directed by John Lasseter
+- Find all the WALL-* movies
 ```
 SELECT * FROM movies WHERE title LIKE "Toy Story%";
 SELECT * FROM movies WHERE director="John Lasseter";
@@ -118,9 +118,9 @@ SELECT Name,MAX(Years_employed) FROM employees;
 ```
 
 ## Exercise 11 — Tasks
-Find the number of Artists in the studio (without a HAVING clause) ✓
-Find the number of Employees of each role in the studio
-Find the total number of years employed by all Engineers
+- Find the number of Artists in the studio (without a HAVING clause) ✓
+- Find the number of Employees of each role in the studio
+- Find the total number of years employed by all Engineers
 ```
 SELECT count(role) FROM employees WHERE role = 'Artist';
 SELECT role,count(role) FROM employees group by role;
@@ -128,20 +128,20 @@ SELECT role,sum(years_employed) FROM employees WHERE role = 'Engineer';
 ```
 
 ## Exercise 12 — Tasks
-Find the number of movies each director has directed
-Find the total domestic and international sales that can be attributed to each director
+- Find the number of movies each director has directed
+- Find the total domestic and international sales that can be attributed to each director
 ```
 SELECT director, count(*) director_total FROM movies GROUP BY director;
 
 NOT QUITE CORRECT YET...AMMEND THIS QUERY
-SELECT director,(international_sales+domestic_sales) AS Total_Sales FROM movies inner join boxoffice on id=boxoffice.movie_id;
+- SELECT director,(international_sales+domestic_sales) AS Total_Sales FROM movies inner join boxoffice on id=boxoffice.movie_id;
 
 THIS ONE IS CORRECT
 SELECT director,SUM(Domestic_sales+International_sales) FROM Movies INNER JOIN Boxoffice ON id=Boxoffice.Movie_Id group by director;
 ```
 Exercise 13 — Tasks
-Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
-Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
+- Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+- Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
 
 ```
 INSERT INTO Movies (title,director) VALUES ('Toy Story 4','Fabio Grasso');
@@ -150,9 +150,9 @@ INSERT INTO Boxoffice (Movie_id,Rating,Domestic_sales,International_sales) VALUE
 ```
 
 ## Exercise 14 — Tasks
-The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
-The year that Toy Story 2 was released is incorrect, it was actually released in 1999
-Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
+- The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
+- The year that Toy Story 2 was released is incorrect, it was actually released in 1999
+- Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
 ```
 UPDATE Movies SET Director="John Lasseter" WHERE Title="A Bug's Life";
 
@@ -162,8 +162,8 @@ UPDATE Movies SET Director="Lee Unkrich",Title="Toy Story 3" WHERE Id=11;
 ```
 
 ## Exercise 15 — Tasks
-This database is getting too big, lets remove all movies that were released before 2005. ✓
-Andrew Stanton has also left the studio, so please remove all movies directed by him.
+- This database is getting too big, lets remove all movies that were released before 2005. ✓
+- Andrew Stanton has also left the studio, so please remove all movies directed by him.
 ```
 DELETE FROM Movies WHERE Year < 2005;
 
@@ -172,9 +172,9 @@ DELETE FROM Movies WHERE Director="Andrew Stanton";
 
 ## Exercise 16 — Tasks
 Create a new table named Database with the following columns:
-– Name A string (text) describing the name of the database
-– Version A number (floating point) of the latest version of this database
-– Download_count An integer count of the number of times this database was downloaded
+- Name A string (text) describing the name of the database
+- Version A number (floating point) of the latest version of this database
+- Download_count An integer count of the number of times this database was downloaded
 ```
 CREATE TABLE IF NOT EXISTS Database (
     Name TEXT,
@@ -183,8 +183,8 @@ CREATE TABLE IF NOT EXISTS Database (
 ```
 
 ## Exercise 17 — Tasks
-Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in.
-Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English.
+- Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in.
+- Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English.
 ```
 ALTER TABLE Movies
 ADD Aspect_ratio FLOAT;
@@ -195,8 +195,8 @@ ADD Language TEXT
 ```
 
 ## Exercise 18 — Tasks
-We've sadly reached the end of our lessons, lets clean up by removing the Movies table
-And drop the BoxOffice table as well
+- We've sadly reached the end of our lessons, lets clean up by removing the Movies table
+- And drop the BoxOffice table as well
 ```
 DROP TABLE IF EXISTS Movies;
 
