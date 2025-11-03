@@ -20,7 +20,7 @@ SELECT * FROM movies;
 - Find the movies released in the years between 2000 and 2010
 - Find the movies not released in the years between 2000 and 2010
 - Find the first 5 Pixar movies and their release year
-```
+```sql
 SELECT * FROM Movies WHERE id=6;
 SELECT * FROM Movies WHERE Year BETWEEN 2000 AND 2010;
 SELECT * FROM Movies WHERE Year NOT BETWEEN 2000 AND 2010;
@@ -32,7 +32,7 @@ SELECT * FROM movies WHERE ID BETWEEN 1 AND 5;
 - Find all the movies directed by John Lasseter
 - Find all the movies (and director) not directed by John Lasseter
 - Find all the WALL-* movies
-```
+```sql
 SELECT * FROM movies WHERE title LIKE "Toy Story%";
 SELECT * FROM movies WHERE director="John Lasseter";
 SELECT title,director FROM movies WHERE director NOT LIKE "John Lasseter";
@@ -73,7 +73,7 @@ SELECT city,population FROM north_american_cities WHERE country='United States' 
 - Find the domestic and international sales for each movie
 - Show the sales numbers for each movie that did better internationally rather than domestically
 - List all the movies by their ratings in descending order
-```
+```sql
 SELECT title,domestic_sales,international_sales FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id;
 SELECT title,domestic_sales,international_sales FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id WHERE international_sales > domestic_sales;
 SELECT title,rating FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id ORDER BY rating DESC;
@@ -83,7 +83,7 @@ SELECT title,rating FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id OR
 - Find the list of all buildings that have employees
 - Find the list of all buildings and their capacity
 - List all buildings and the distinct employee roles in each building (including empty buildings)
-```
+```sql
 SELECT DISTINCT building FROM employees;
 SELECT building_name,capacity FROM Buildings;
 SELECT DISTINCT building_name,role FROM buildings LEFT JOIN employees ON building_name=employees.building;
@@ -92,7 +92,7 @@ SELECT DISTINCT building_name,role FROM buildings LEFT JOIN employees ON buildin
 ## Exercise 8 — Tasks
 - Find the name and role of all employees who have not been assigned to a building
 - Find the names of the buildings that hold no employees
-```
+```sql
 SELECT name,role,building FROM employees WHERE building IS NULL;
 SELECT building_name,name FROM buildings LEFT JOIN employees ON building_name=employees.building WHERE name IS NULL; 
 ```
@@ -101,7 +101,7 @@ SELECT building_name,name FROM buildings LEFT JOIN employees ON building_name=em
 - List all movies and their combined sales in millions of dollars 
 - List all movies and their ratings in percent
 - List all movies that were released on even number years
-```
+```sql
 SELECT title,(domestic_sales+international_sales) / 1000000 AS SALES FROM movies INNER JOIN boxoffice on id=boxoffice.movie_id;
 
 SELECT title,(rating * 10)AS Percentage_rating FROM Movies INNER JOIN Boxoffice ON id=boxoffice.movie_id;
@@ -113,7 +113,7 @@ SELECT title FROM Movies WHERE year % 2 = 0;
 - Find the longest time that an employee has been at the studio 
 - For each role, find the average number of years employed by employees in that role
 - Find the total number of employee years worked in each building
-```
+```sql
 SELECT Name,MAX(Years_employed) FROM employees;
 ```
 
@@ -130,7 +130,7 @@ SELECT role,sum(years_employed) FROM employees WHERE role = 'Engineer';
 ## Exercise 12 — Tasks
 - Find the number of movies each director has directed
 - Find the total domestic and international sales that can be attributed to each director
-```
+```sql
 SELECT director, count(*) director_total FROM movies GROUP BY director;
 
 NOT QUITE CORRECT YET...AMMEND THIS QUERY
@@ -143,7 +143,7 @@ Exercise 13 — Tasks
 - Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
 - Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
 
-```
+```sql
 INSERT INTO Movies (title,director) VALUES ('Toy Story 4','Fabio Grasso');
 
 INSERT INTO Boxoffice (Movie_id,Rating,Domestic_sales,International_sales) VALUES (15,8.7,340000000,270000000)
@@ -153,7 +153,7 @@ INSERT INTO Boxoffice (Movie_id,Rating,Domestic_sales,International_sales) VALUE
 - The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
 - The year that Toy Story 2 was released is incorrect, it was actually released in 1999
 - Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
-```
+```sql
 UPDATE Movies SET Director="John Lasseter" WHERE Title="A Bug's Life";
 
 UPDATE Movies SET Year=1999 WHERE Title="Toy Story 2";
@@ -164,7 +164,7 @@ UPDATE Movies SET Director="Lee Unkrich",Title="Toy Story 3" WHERE Id=11;
 ## Exercise 15 — Tasks
 - This database is getting too big, lets remove all movies that were released before 2005. 
 - Andrew Stanton has also left the studio, so please remove all movies directed by him.
-```
+```sql
 DELETE FROM Movies WHERE Year < 2005;
 
 DELETE FROM Movies WHERE Director="Andrew Stanton";               
@@ -175,7 +175,7 @@ Create a new table named Database with the following columns:
 - Name A string (text) describing the name of the database
 - Version A number (floating point) of the latest version of this database
 - Download_count An integer count of the number of times this database was downloaded
-```
+```sql
 CREATE TABLE IF NOT EXISTS Database (
     Name TEXT,
     Version FLOAT,
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS Database (
 ## Exercise 17 — Tasks
 - Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in.
 - Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English.
-```
+```sql
 ALTER TABLE Movies
 ADD Aspect_ratio FLOAT;
 
@@ -197,7 +197,7 @@ ADD Language TEXT
 ## Exercise 18 — Tasks
 - We've sadly reached the end of our lessons, lets clean up by removing the Movies table
 - And drop the BoxOffice table as well
-```
+```sql
 DROP TABLE IF EXISTS Movies;
 
 DROP TABLE IF EXISTS Boxoffice;
