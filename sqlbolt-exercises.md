@@ -7,13 +7,13 @@ Find the title and director of each film
 Find the title and year of each film
 Find all the information about each film
 This table has no constraints.
-
+```
 SELECT title FROM Movies;
 SELECT director FROM Movies;
 SELECT title and director FROM Movies;
 SELECT title,year FROM movies;
 SELECT * FROM movies;
-
+```
 
 ## Exercise 2 — Tasks
 Find the movie with a row id of 6
