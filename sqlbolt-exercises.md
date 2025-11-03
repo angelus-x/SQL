@@ -7,7 +7,7 @@
 - Find the title and year of each film
 - Find all the information about each film
 - This table has no constraints.
-```
+```sql
 SELECT title FROM Movies;
 SELECT director FROM Movies;
 SELECT title and director FROM Movies;
