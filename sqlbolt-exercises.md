@@ -44,7 +44,7 @@ SELECT title FROM movies WHERE title LIKE "WALL-%";
 - List the last four Pixar movies released (ordered from most recent to least)
 - List the first five Pixar movies sorted alphabetically
 - List the next five Pixar movies sorted alphabetically
-```
+```sql
 SELECT DISTINCT director FROM movies ORDER BY director;
 SELECT title,year FROM movies ORDER BY year DESC LIMIT 4;
 SELECT title,year FROM movies ORDER BY title LIMIT 5;
@@ -57,7 +57,7 @@ SELECT title FROM movies ORDER BY title LIMIT 5 OFFSET 5;
 - List all the cities west of Chicago, ordered from west to east
 - List the two largest cities in Mexico (by population)
 - List the third and fourth largest cities (by population) in the United States and their population
-```
+```sql
 SELECT City,population FROM north_american_cities WHERE country = 'Canada';
 SELECT city,latitude FROM north_american_cities WHERE country="United States" ORDER BY latitude desc;
 
