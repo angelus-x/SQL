@@ -1,6 +1,6 @@
-SQLBOLT 
+#SQLBOLT 
 
-Exercise 1 — Tasks
+#Exercise 1 — Tasks
 Find the title of each film
 Find the director of each film
 Find the title and director of each film
@@ -15,7 +15,7 @@ SELECT title,year FROM movies;
 SELECT * FROM movies;
 
 
-Exercise 2 — Tasks
+#Exercise 2 — Tasks
 Find the movie with a row id of 6
 Find the movies released in the years between 2000 and 2010
 Find the movies not released in the years between 2000 and 2010
@@ -27,7 +27,7 @@ SELECT * FROM Movies WHERE Year NOT BETWEEN 2000 AND 2010;
 SELECT * FROM movies WHERE ID BETWEEN 1 AND 5;
 
 
-Exercise 3 — Tasks
+#Exercise 3 — Tasks
 Find all the Toy Story movies ✓
 Find all the movies directed by John Lasseter
 Find all the movies (and director) not directed by John Lasseter
@@ -39,7 +39,7 @@ SELECT title,director FROM movies WHERE director NOT LIKE "John Lasseter";
 SELECT title FROM movies WHERE title LIKE "WALL-%";
 
 
-Exercise 4 — Tasks
+#Exercise 4 — Tasks
 List all directors of Pixar movies (alphabetically), without duplicates
 List the last four Pixar movies released (ordered from most recent to least)
 List the first five Pixar movies sorted alphabetically
@@ -51,7 +51,7 @@ SELECT title,year FROM movies ORDER BY title LIMIT 5;
 SELECT title FROM movies ORDER BY title LIMIT 5 OFFSET 5;
 
 
-Review 1 — Tasks
+#Review 1 — Tasks
 List all the Canadian cities and their populations
 Order all the cities in the United States by their latitude from north to south
 List all the cities west of Chicago, ordered from west to east
@@ -69,7 +69,7 @@ SELECT city,population FROM north_american_cities WHERE country='Mexico' order b
 SELECT city,population FROM north_american_cities WHERE country='United States' ORDER BY population DESC LIMIT 2 OFFSET 2;
 
 
-Exercise 6 — Tasks
+#Exercise 6 — Tasks
 Find the domestic and international sales for each movie
 Show the sales numbers for each movie that did better internationally rather than domestically
 List all the movies by their ratings in descending order
@@ -79,7 +79,7 @@ SELECT title,domestic_sales,international_sales FROM movies INNER JOIN boxoffice
 SELECT title,rating FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id ORDER BY rating DESC;
 
 
-Exercise 7 — Tasks
+#Exercise 7 — Tasks
 Find the list of all buildings that have employees
 Find the list of all buildings and their capacity
 List all buildings and the distinct employee roles in each building (including empty buildings)
@@ -89,7 +89,7 @@ SELECT building_name,capacity FROM Buildings;
 SELECT DISTINCT building_name,role FROM buildings LEFT JOIN employees ON building_name=employees.building;
 
 
-Exercise 8 — Tasks
+#Exercise 8 — Tasks
 Find the name and role of all employees who have not been assigned to a building
 Find the names of the buildings that hold no employees
 
@@ -97,7 +97,7 @@ SELECT name,role,building FROM employees WHERE building IS NULL;
 SELECT building_name,name FROM buildings LEFT JOIN employees ON building_name=employees.building WHERE name IS NULL; 
 
 
-Exercise 9 — Tasks
+#Exercise 9 — Tasks
 List all movies and their combined sales in millions of dollars ✓
 List all movies and their ratings in percent
 List all movies that were released on even number years
@@ -109,7 +109,7 @@ SELECT title,(rating * 10)AS Percentage_rating FROM Movies INNER JOIN Boxoffice 
 SELECT title FROM Movies WHERE year % 2 = 0;
 
 
-Exercise 10 — Tasks
+#Exercise 10 — Tasks
 Find the longest time that an employee has been at the studio ✓
 For each role, find the average number of years employed by employees in that role
 Find the total number of employee years worked in each building
@@ -117,7 +117,7 @@ Find the total number of employee years worked in each building
 SELECT Name,MAX(Years_employed) FROM employees;
 
 
-Exercise 11 — Tasks
+#Exercise 11 — Tasks
 Find the number of Artists in the studio (without a HAVING clause) ✓
 Find the number of Employees of each role in the studio
 Find the total number of years employed by all Engineers
@@ -127,7 +127,7 @@ SELECT role,count(role) FROM employees group by role;
 SELECT role,sum(years_employed) FROM employees WHERE role = 'Engineer';
 
 
-Exercise 12 — Tasks
+#Exercise 12 — Tasks
 Find the number of movies each director has directed
 Find the total domestic and international sales that can be attributed to each director
 
@@ -149,7 +149,7 @@ INSERT INTO Movies (title,director) VALUES ('Toy Story 4','Fabio Grasso');
 INSERT INTO Boxoffice (Movie_id,Rating,Domestic_sales,International_sales) VALUES (15,8.7,340000000,270000000)
 
 
-Exercise 14 — Tasks
+#Exercise 14 — Tasks
 The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
 The year that Toy Story 2 was released is incorrect, it was actually released in 1999
 Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
@@ -161,7 +161,7 @@ UPDATE Movies SET Year=1999 WHERE Title="Toy Story 2";
 UPDATE Movies SET Director="Lee Unkrich",Title="Toy Story 3" WHERE Id=11;
 
 
-Exercise 15 — Tasks
+#Exercise 15 — Tasks
 This database is getting too big, lets remove all movies that were released before 2005. ✓
 Andrew Stanton has also left the studio, so please remove all movies directed by him.
 
@@ -170,7 +170,7 @@ DELETE FROM Movies WHERE Year < 2005;
 DELETE FROM Movies WHERE Director="Andrew Stanton";               
 
 
-Exercise 16 — Tasks
+#Exercise 16 — Tasks
 Create a new table named Database with the following columns:
 – Name A string (text) describing the name of the database
 – Version A number (floating point) of the latest version of this database
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS Database (
     Download_count INTEGER);
 
 
-Exercise 17 — Tasks
+#Exercise 17 — Tasks
 Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in.
 Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English.
 
@@ -194,7 +194,7 @@ ADD Language TEXT
 	DEFAULT English;   
 
 
-Exercise 18 — Tasks
+#Exercise 18 — Tasks
 We've sadly reached the end of our lessons, lets clean up by removing the Movies table
 And drop the BoxOffice table as well
 
