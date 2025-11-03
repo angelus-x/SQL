@@ -40,10 +40,10 @@ SELECT title FROM movies WHERE title LIKE "WALL-%";
 ```
 
 ## Exercise 4 — Tasks
-List all directors of Pixar movies (alphabetically), without duplicates
-List the last four Pixar movies released (ordered from most recent to least)
-List the first five Pixar movies sorted alphabetically
-List the next five Pixar movies sorted alphabetically
+- List all directors of Pixar movies (alphabetically), without duplicates
+- List the last four Pixar movies released (ordered from most recent to least)
+- List the first five Pixar movies sorted alphabetically
+- List the next five Pixar movies sorted alphabetically
 ```
 SELECT DISTINCT director FROM movies ORDER BY director;
 SELECT title,year FROM movies ORDER BY year DESC LIMIT 4;
@@ -52,11 +52,11 @@ SELECT title FROM movies ORDER BY title LIMIT 5 OFFSET 5;
 ```
 
 ## Review 1 — Tasks
-List all the Canadian cities and their populations
-Order all the cities in the United States by their latitude from north to south
-List all the cities west of Chicago, ordered from west to east
-List the two largest cities in Mexico (by population)
-List the third and fourth largest cities (by population) in the United States and their population
+- List all the Canadian cities and their populations
+- Order all the cities in the United States by their latitude from north to south
+- List all the cities west of Chicago, ordered from west to east
+- List the two largest cities in Mexico (by population)
+- List the third and fourth largest cities (by population) in the United States and their population
 ```
 SELECT City,population FROM north_american_cities WHERE country = 'Canada';
 SELECT city,latitude FROM north_american_cities WHERE country="United States" ORDER BY latitude desc;
@@ -70,9 +70,9 @@ SELECT city,population FROM north_american_cities WHERE country='United States' 
 ```
 
 ## Exercise 6 — Tasks
-Find the domestic and international sales for each movie
-Show the sales numbers for each movie that did better internationally rather than domestically
-List all the movies by their ratings in descending order
+- Find the domestic and international sales for each movie
+- Show the sales numbers for each movie that did better internationally rather than domestically
+- List all the movies by their ratings in descending order
 ```
 SELECT title,domestic_sales,international_sales FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id;
 SELECT title,domestic_sales,international_sales FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id WHERE international_sales > domestic_sales;
@@ -80,9 +80,9 @@ SELECT title,rating FROM movies INNER JOIN boxoffice ON id=boxoffice.movie_id OR
 ```
 
 ## Exercise 7 — Tasks
-Find the list of all buildings that have employees
-Find the list of all buildings and their capacity
-List all buildings and the distinct employee roles in each building (including empty buildings)
+- Find the list of all buildings that have employees
+- Find the list of all buildings and their capacity
+- List all buildings and the distinct employee roles in each building (including empty buildings)
 ```
 SELECT DISTINCT building FROM employees;
 SELECT building_name,capacity FROM Buildings;
@@ -90,17 +90,17 @@ SELECT DISTINCT building_name,role FROM buildings LEFT JOIN employees ON buildin
 ```
 
 ## Exercise 8 — Tasks
-Find the name and role of all employees who have not been assigned to a building
-Find the names of the buildings that hold no employees
+- Find the name and role of all employees who have not been assigned to a building
+- Find the names of the buildings that hold no employees
 ```
 SELECT name,role,building FROM employees WHERE building IS NULL;
 SELECT building_name,name FROM buildings LEFT JOIN employees ON building_name=employees.building WHERE name IS NULL; 
 ```
 
 ## Exercise 9 — Tasks
-List all movies and their combined sales in millions of dollars ✓
-List all movies and their ratings in percent
-List all movies that were released on even number years
+- List all movies and their combined sales in millions of dollars 
+- List all movies and their ratings in percent
+- List all movies that were released on even number years
 ```
 SELECT title,(domestic_sales+international_sales) / 1000000 AS SALES FROM movies INNER JOIN boxoffice on id=boxoffice.movie_id;
 
@@ -110,15 +110,15 @@ SELECT title FROM Movies WHERE year % 2 = 0;
 ```
 
 ## Exercise 10 — Tasks
-Find the longest time that an employee has been at the studio ✓
-For each role, find the average number of years employed by employees in that role
-Find the total number of employee years worked in each building
+- Find the longest time that an employee has been at the studio 
+- For each role, find the average number of years employed by employees in that role
+- Find the total number of employee years worked in each building
 ```
 SELECT Name,MAX(Years_employed) FROM employees;
 ```
 
 ## Exercise 11 — Tasks
-- Find the number of Artists in the studio (without a HAVING clause) ✓
+- Find the number of Artists in the studio (without a HAVING clause) 
 - Find the number of Employees of each role in the studio
 - Find the total number of years employed by all Engineers
 ```
@@ -162,7 +162,7 @@ UPDATE Movies SET Director="Lee Unkrich",Title="Toy Story 3" WHERE Id=11;
 ```
 
 ## Exercise 15 — Tasks
-- This database is getting too big, lets remove all movies that were released before 2005. ✓
+- This database is getting too big, lets remove all movies that were released before 2005. 
 - Andrew Stanton has also left the studio, so please remove all movies directed by him.
 ```
 DELETE FROM Movies WHERE Year < 2005;
